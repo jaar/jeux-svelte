@@ -20,8 +20,24 @@
         jeuxFiltres = await response.json();
     }
 
+    import { trpc } from '$lib/trpc/client';
+    import { page } from '$app/stores';
+    let greeting = 'press the button to load data';
+
+    const loadData = async () => {
+        jeuxFiltres = await trpc($page).jeuxRouter.getJeux.query ('el' );
+    };
+
 </script>
 
+
+<a
+  href="#load"
+  role="button"
+  class="secondary"
+  on:click|preventDefault={loadData}>Load</a
+>
+<p>{greeting}</p>
 
 <h1>Liste des jeux</h1>
 
