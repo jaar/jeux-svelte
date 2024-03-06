@@ -1,0 +1,30 @@
+services:
+  jeux-svelte:
+    image: jeux-svelte
+    ports:
+      - '3000:3000'
+    environment:
+      - DATABASE_URL=postgresql://jeux:jeux@postgresql:5432/jeux?schema=public
+    networks:
+      - jeux
+
+  postgresql:
+    image: docker.io/bitnami/postgresql:16
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgresql_data:/bitnami/postgresql'
+    environment:
+      - POSTGRESQL_POSTGRES_PASSWORD=postgres
+      - POSTGRESQL_DATABASE=jeux
+      - POSTGRESQL_USERNAME=jeux
+      - POSTGRESQL_PASSWORD=jeux
+    networks:
+      - jeux
+
+networks:
+  jeux:
+
+volumes:
+  postgresql_data:
+    driver: local
