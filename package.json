@@ -35,7 +35,11 @@
 	"type": "module",
 	"dependencies": {
 		"@prisma/client": "^5.9.1",
+		"@trpc/client": "^10.45.1",
+		"@trpc/server": "^10.45.1",
 		"bootstrap": "^5.3.2",
-		"date-fns": "^3.3.0"
+		"date-fns": "^3.3.0",
+		"trpc-sveltekit": "^3.5.26",
+		"zod": "^3.22.4"
 	}
 }
